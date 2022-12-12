@@ -6,5 +6,11 @@ import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 @RequestMapping
-public class DogController {
+public class HomeController {
+    @RequestMapping("/home.html")
+    public ModelAndView firstPage() {
+        return new ModelAndView("welcome");
     }
+
+}
+
