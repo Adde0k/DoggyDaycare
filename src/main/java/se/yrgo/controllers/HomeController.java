@@ -1,15 +1,16 @@
 package se.yrgo.controllers;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-@RequestMapping
+@RequestMapping("/home")
 public class HomeController {
-    @RequestMapping("/home.html")
+    @GetMapping
     public ModelAndView firstPage() {
-        return new ModelAndView("welcome");
+        return new ModelAndView("/WEB-INF/jsp/welcome.jsp");
     }
 
 }
