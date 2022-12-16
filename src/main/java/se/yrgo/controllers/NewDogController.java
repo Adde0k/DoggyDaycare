@@ -1,14 +1,18 @@
 package se.yrgo.controllers;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-@RequestMapping(value = "/newDog")
+@RequestMapping("/newDogC")
 public class NewDogController {
-	@RequestMapping("/newDog.html")
-    public ModelAndView firstPage() {
-        return new ModelAndView("allDogs");
+	@GetMapping("/newDogC")
+    public ModelAndView showNewDogForm() {
+        ModelAndView mav = new ModelAndView("/newDogC");
+		mav.addObject("h1", mav);
+		mav.addObject("form", mav);
+		return mav;
     }
 }

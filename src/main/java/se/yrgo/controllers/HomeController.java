@@ -8,9 +8,13 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 @RequestMapping("/home")
 public class HomeController {
-    @GetMapping
+	
+    @GetMapping("/home")
     public ModelAndView firstPage() {
-        return new ModelAndView("/WEB-INF/jsp/welcome.jsp");
+        ModelAndView mav = new ModelAndView("/newDog");
+		mav.addObject("h1", mav);
+		mav.addObject("form", mav);
+		return mav;
     }
 
 }
