@@ -8,4 +8,3 @@
 <h1 style="color:red;">Welcome to our DoggyDaycare, where your dogs are well taken care of!</h1>
 </body>
 </html>
-
