@@ -15,35 +15,34 @@ import org.springframework.web.servlet.view.RedirectView;
 import se.yrgo.data.DogRepository;
 import se.yrgo.domain.Dog;
 
-
 @Controller
-@RequestMapping("/dogs")
+@RequestMapping("/home/dogs")
 public class DogController {
-@Autowired
-private DogRepository data;
+	@Autowired
+	private DogRepository data;
 
-	@RequestMapping(value = "/newDog", method = RequestMethod.POST)
+	@RequestMapping(value = "/newDog.html", method = RequestMethod.POST)
 	public String newDog(Dog dog) {
 		data.save(dog);
-		return "redirect:/website/list";
+		return "redirect:/website/dogs/list.html";
 	}
 
-	@RequestMapping(value = "/newDog", method = RequestMethod.GET)
+	@RequestMapping(value = "/newDog.html", method = RequestMethod.GET)
 	public ModelAndView renderNewDogForm() {
 		Dog newDog = new Dog();
 		return new ModelAndView("newDog", "form", newDog);
 	}
 
-	@RequestMapping(value = "/allDogs", method = RequestMethod.GET)
-	public ModelAndView dogs() {
-		List<Dog> allDog = data.findAll();
-		return new ModelAndView("allDogs", "dogs",
-				allDog);
+	@RequestMapping(value = "/list.html", method = RequestMethod.GET)
+    public ModelAndView dogs() {
+        List<Dog> allDogs = data.findAll();
+        return new ModelAndView("allDogs", "dogs",
+                allDogs);
 	}
 
 	@RequestMapping(value = "/dog/{name}")
 	public ModelAndView showDogByName(@PathVariable("name") String name) {
-		// ToDO
-		throw new UnsupportedOperationException();
+		Dog dog = data.findByName(name);
+		return new ModelAndView("dogInfo", "dog", dog);
 	}
 }
