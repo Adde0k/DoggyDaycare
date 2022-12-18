@@ -13,25 +13,25 @@
         </div>
 
         <div>
-            <form:label path="breed">Name</form:label>
+            <form:label path="breed">Breed</form:label>
             <form:input path="breed" />
             <form:errors path="breed" />
         </div>
 
         <div>
-            <form:label path="age">Name</form:label>
+            <form:label path="age">Age</form:label>
             <form:input path="age" />
             <form:errors path="age" />
         </div>
 
         <div>
-            <form:label path="startDate">Name</form:label>
+            <form:label path="startDate">Start Name</form:label>
             <form:input path="startDate" />
             <form:errors path="startDate" />
         </div>
 
         <div>
-            <form:label path="endDate">Name</form:label>
+            <form:label path="endDate">End Date</form:label>
             <form:input path="endDate" />
             <form:errors path="endDate" />
         </div>
