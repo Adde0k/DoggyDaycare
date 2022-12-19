@@ -2,6 +2,9 @@ package se.yrgo.controllers;
 
 import java.time.LocalDateTime;
 import java.util.List;
+
+import javax.annotation.PostConstruct;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -17,6 +20,16 @@ import se.yrgo.domain.Dog;
 public class DogController {
 	@Autowired
 	private DogRepository data;
+
+	@PostConstruct
+	public void init() {
+		Dog dog1 = new Dog("Max", "Golden Retriever", 4, LocalDateTime.of(2022, 12, 15, 0, 0, 0));
+		Dog dog2 = new Dog("Clifford", "Giant Vizsla", 2, LocalDateTime.of(2022, 12, 13, 0, 0, 0));
+		Dog dog3 = new Dog("Scooby", "Great Dane", 7, LocalDateTime.of(2022, 12, 19, 0, 0, 0));
+		data.save(dog1);
+		data.save(dog2);
+		data.save(dog3);
+	}
 
 	@RequestMapping(value = "/new-dog", method = RequestMethod.POST)
 	public String newDog(Dog dog) {
@@ -40,9 +53,12 @@ public class DogController {
 	@RequestMapping(value = { "/list", "", "/" }, method = RequestMethod.GET)
 	public ModelAndView dogs() {
 		List<Dog> allDogs = data.findAll();
-		allDogs.add(new Dog("Max", "Golden Retriever", 4, LocalDateTime.of(2022, 12, 15, 0, 0, 0)));
-		allDogs.add(new Dog("Clifford", "Giant Vizsla", 2, LocalDateTime.of(2022, 12, 13, 0, 0, 0)));
-		allDogs.add(new Dog("Scooby", "Great Dane", 7, LocalDateTime.of(2022, 12, 19, 0, 0, 0)));
+		// allDogs.add(new Dog("Max", "Golden Retriever", 4, LocalDateTime.of(2022, 12,
+		// 15, 0, 0, 0)));
+		// allDogs.add(new Dog("Clifford", "Giant Vizsla", 2, LocalDateTime.of(2022, 12,
+		// 13, 0, 0, 0)));
+		// allDogs.add(new Dog("Scooby", "Great Dane", 7, LocalDateTime.of(2022, 12, 19,
+		// 0, 0, 0)));
 		return new ModelAndView("allDogs", "dogs", allDogs);
 	}
 
