@@ -6,10 +6,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class HomeController {
-    @RequestMapping("/home.html")
+    @RequestMapping(value = { "/home", "/", "" })
     public ModelAndView firstPage() {
         return new ModelAndView("welcome");
     }
-
 }
-
