@@ -38,6 +38,22 @@ public class Dog {
         this.endDate = startDate.plusWeeks(2);
     }
 
+    public Dog(String name, String breed, int age, LocalDateTime startDate, LocalDateTime endDate) {
+        this.name = name;
+        this.breed = breed;
+        this.age = age;
+        if (startDate == null) {
+            this.startDate = LocalDateTime.now();
+        } else {
+            this.startDate = startDate;
+        }
+        if (endDate == null) {
+            this.endDate = startDate.plusWeeks(2);
+        } else {
+            this.endDate = endDate;
+        }
+    }
+
     public long getId() {
         return id;
     }

@@ -20,6 +20,13 @@ public class DogController {
 
 	@RequestMapping(value = "/new-dog", method = RequestMethod.POST)
 	public String newDog(Dog dog) {
+		if (dog.getStartDate() == null) {
+			dog.setStartDate(LocalDateTime.now());
+			dog.setEndDate(dog.getStartDate().plusWeeks(2));
+		}
+		if (dog.getEndDate() == null) {
+			dog.setEndDate(dog.getStartDate().plusWeeks(2));
+		}
 		data.save(dog);
 		return "redirect:/dogs/list";
 	}
@@ -30,7 +37,7 @@ public class DogController {
 		return new ModelAndView("newDog", "form", newDog);
 	}
 
-	@RequestMapping(value = {"/list", "", "/"}, method = RequestMethod.GET)
+	@RequestMapping(value = { "/list", "", "/" }, method = RequestMethod.GET)
 	public ModelAndView dogs() {
 		List<Dog> allDogs = data.findAll();
 		allDogs.add(new Dog("Max", "Golden Retriever", 4, LocalDateTime.of(2022, 12, 15, 0, 0, 0)));
