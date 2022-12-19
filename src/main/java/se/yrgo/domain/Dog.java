@@ -1,6 +1,7 @@
 package se.yrgo.domain;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -26,6 +27,14 @@ public class Dog {
         this.breed = breed;
         this.age = age;
         this.startDate = LocalDateTime.now();
+        this.endDate = startDate.plusWeeks(2);
+    }
+
+    public Dog(String name, String breed, int age, LocalDateTime startDate) {
+        this.name = name;
+        this.breed = breed;
+        this.age = age;
+        this.startDate = startDate;
         this.endDate = startDate.plusWeeks(2);
     }
 
@@ -79,7 +88,10 @@ public class Dog {
 
     @Override
     public String toString() {
-        return name + ", the " + breed + ", will stay from " + startDate + " until " + endDate + ".";
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        String startDateFormatted = startDate.format(formatter);
+        String endDateFormatted = endDate.format(formatter);
+        return name + ", the " + breed + ", will stay from " + startDateFormatted + " until " + endDateFormatted + ".";
 
     }
 }
