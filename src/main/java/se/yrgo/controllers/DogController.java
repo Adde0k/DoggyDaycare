@@ -23,12 +23,9 @@ public class DogController {
 
 	@PostConstruct
 	public void init() {
-		Dog dog1 = new Dog("Max", "Golden Retriever", 4, LocalDateTime.of(2022, 12, 15, 0, 0, 0));
-		Dog dog2 = new Dog("Clifford", "Giant Vizsla", 2, LocalDateTime.of(2022, 12, 13, 0, 0, 0));
-		Dog dog3 = new Dog("Scooby", "Great Dane", 7, LocalDateTime.of(2022, 12, 19, 0, 0, 0));
-		data.save(dog1);
-		data.save(dog2);
-		data.save(dog3);
+		data.save(new Dog("Max", "Golden Retriever", 4, LocalDateTime.of(2022, 12, 15, 0, 0, 0)));
+		data.save(new Dog("Clifford", "Giant Vizsla", 2, LocalDateTime.of(2022, 12, 13, 0, 0, 0)));
+		data.save(new Dog("Scooby", "Great Dane", 7, LocalDateTime.of(2022, 12, 19, 0, 0, 0)));
 	}
 
 	@RequestMapping(value = "/new-dog", method = RequestMethod.POST)
