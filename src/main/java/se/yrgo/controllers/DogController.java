@@ -30,7 +30,7 @@ public class DogController {
 		return new ModelAndView("newDog", "form", newDog);
 	}
 
-	@RequestMapping(value = "/list", method = RequestMethod.GET)
+	@RequestMapping(value = {"/list", "", "/"}, method = RequestMethod.GET)
 	public ModelAndView dogs() {
 		List<Dog> allDogs = data.findAll();
 		allDogs.add(new Dog("Max", "Golden Retriever", 4, LocalDateTime.of(2022, 12, 15, 0, 0, 0)));
